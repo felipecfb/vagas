@@ -41,3 +41,6 @@ Retorne quantas vezes determinado usuário foi lido no teste1.
 
 Definina uma forma de criar permissão para o usuario, defina se o usuário pode deletar ou atualizar usuários. Crie um middleware para validar essas permissões e adicione no teste4 e teste3.
 
+Para o middleware autorizar, ele verificado a role (Admin ou Client) do usuário. Caso seja admin, o usuário está apto para realizar modificações ou deletar um usuário. Eu estou verificando o usuário por um userId que está sendo passado nos query params, para este caso, seria mais interessante utilizar o jsonwebtoken, porém, é um CRUD básico, então não vi necessidade de utilizar.
+## Exemplo:
+`DELETE` http://localhost:3000/users?userId=1&name=João%20Oliveira
