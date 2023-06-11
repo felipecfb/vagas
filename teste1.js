@@ -25,8 +25,6 @@ const getUser = (req, res, next) => {
 
     userCount[user.name]++;
 
-    console.log(userCount[user.name]);
-
     return res.status(200).send(user);
 };
 
