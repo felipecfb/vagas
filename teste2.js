@@ -20,7 +20,8 @@ module.exports = function(req, res){
     var newUser = {
         id: data.length + 1,
         name,
-        job
+        job,
+        role: "client"
     };
 
     data.push(newUser);
