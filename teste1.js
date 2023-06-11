@@ -1,7 +1,7 @@
 var data = require("./fakeData");
 
 const getUser = (req, res, next) => {
-    var name = req.query.name;
+    var { name } = req.query;
 
     const user = data.find(user => user.name.includes(name));
 
