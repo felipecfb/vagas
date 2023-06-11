@@ -1,7 +1,15 @@
 var data = require("./fakeData");
 
+var userCount = {};
+
 const getUser = (req, res, next) => {
     var { name } = req.query;
+
+    if (!name) {
+        return res.status(400).json({
+            message: 'Please provide a name.'
+        });
+    }
 
     const user = data.find(user => user.name.includes(name));
 
@@ -11,7 +19,15 @@ const getUser = (req, res, next) => {
         })
     }
 
-    res.send(user);
+    if (!userCount[user.name]) {
+        userCount[user.name] = 0;
+    }
+
+    userCount[user.name]++;
+
+    console.log(userCount[user.name]);
+
+    return res.status(200).send(user);
 };
 
 const getUsers = (req, res, next) => {
@@ -22,5 +38,6 @@ const getUsers = (req, res, next) => {
 
 module.exports = {
     getUser,
-    getUsers
+    getUsers,
+    userCount
 };
